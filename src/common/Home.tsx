@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './react.svg';
 
-import './Home.css';
+import './Home.scss';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component<{}, {}> {
   public render() {
@@ -25,6 +26,7 @@ class Home extends React.Component<{}, {}> {
           <li>
             <a href="https://palmer.chat">Community Slack</a>
           </li>
+          <Link to="/about">About</Link>
         </ul>
       </div>
     );
