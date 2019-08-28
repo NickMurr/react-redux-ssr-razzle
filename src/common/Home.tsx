@@ -3,15 +3,32 @@ import logo from './react.svg';
 
 import './Home.scss';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  border-radius: 3px;
+  padding: 0.25em 1em;
+  margin: 0 1em;
+  background: transparent;
+  color: palevioletred;
+  border: 2px solid palevioletred;
+`;
+
+const HomeWrap = styled.div`
+  .Home-header {
+    background: green;
+  }
+`;
+const HomeHead = styled.div``;
 
 class Home extends React.Component<{}, {}> {
   public render() {
     return (
-      <div className="Home">
-        <div className="Home-header">
+      <HomeWrap className="Home">
+        <HomeHead className="Home-header">
           <img src={logo} className="Home-logo" alt="logo" />
           <h2>Welcome to Razzles</h2>
-        </div>
+        </HomeHead>
         <p className="Home-intro">
           To get started, edit <code>src/App.tsx</code> or{' '}
           <code>src/Home.tsx</code> and save to reload.
@@ -26,9 +43,10 @@ class Home extends React.Component<{}, {}> {
           <li>
             <a href="https://palmer.chat">Community Slack</a>
           </li>
+          <Button>StyledComponent button</Button>
           <Link to="/about">About</Link>
         </ul>
-      </div>
+      </HomeWrap>
     );
   }
 }
