@@ -5,6 +5,9 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 let assets: any;
 import { ServerStyleSheet, ThemeProvider } from 'styled-components';
+import configureStore from '../common/store';
+import { Provider } from 'react-redux';
+import serializeJavascript from 'serialize-javascript';
 const syncLoadAssets = () => {
   assets = require(process.env.RAZZLE_ASSETS_MANIFEST!);
 };
@@ -17,16 +20,21 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR!));
 
 server.get('/*', (req, res) => {
+  const counter = { counter: 3 };
+  // Compile an initial state
+  const preloadedState = { counter };
+  const store = configureStore(preloadedState);
+
   const context: any = {};
   const sheet = new ServerStyleSheet();
   const markup = renderToString(
-    sheet.collectStyles(
+    <Provider store={store}>
       <StaticRouter context={context} location={req.url}>
-        <App />
+        {sheet.collectStyles(<App />)}
       </StaticRouter>
-    )
+    </Provider>
   );
-
+  const finalState = store.getState();
   const styleTags = sheet.getStyleTags();
 
   if (context.url) {
@@ -55,6 +63,9 @@ server.get('/*', (req, res) => {
     </head>
     <body>
         <div id="root">${markup}</div>
+         <script>
+          window.__PRELOADED_STATE__ = ${serializeJavascript(finalState)}
+        </script>
     </body>
 </html>`
     );

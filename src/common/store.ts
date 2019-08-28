@@ -14,7 +14,7 @@ const middleware = [thunk];
 //   composeEnhancers(applyMiddleware(...middleware))
 // );
 
-const configureStore = (preloadedState: any = {}) => {
+const configureStore = (preloadedState: any) => {
   const store = createStore(
     rootReducer,
     preloadedState,

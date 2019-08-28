@@ -36,31 +36,27 @@ const HomeHeader = styled.div`
 `;
 
 const App = () => (
-  <Provider store={configureStore()}>
-    <div className="Home">
-      <HomeHeader>
-        <div>
-          <HomeLogo src={logo} alt="logo" />
-        </div>
-        <h2>Welcome to Razzles</h2>
-        <div
-          style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
-        >
-          <Links>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/counter">Counter</Link>
-          </Links>
-        </div>
-      </HomeHeader>
+  <div className="Home">
+    <HomeHeader>
+      <div>
+        <HomeLogo src={logo} alt="logo" />
+      </div>
+      <h2>Welcome to Razzles</h2>
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <Links>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/counter">Counter</Link>
+        </Links>
+      </div>
+    </HomeHeader>
 
-      <Switch>
-        <Route exact={true} path="/" component={Home} />
-        <Route exact={true} path="/about" component={About} />
-        <Route exact={true} path="/counter" component={Counter} />
-      </Switch>
-    </div>
-  </Provider>
+    <Switch>
+      <Route exact={true} path="/" component={Home} />
+      <Route exact={true} path="/about" component={About} />
+      <Route exact={true} path="/counter" component={Counter} />
+    </Switch>
+  </div>
 );
 
 export default App;
