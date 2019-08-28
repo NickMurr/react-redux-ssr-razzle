@@ -4,8 +4,7 @@ import { StaticRouter } from 'react-router-dom';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
 let assets: any;
-import { ServerStyleSheet } from 'styled-components';
-
+import { ServerStyleSheet, ThemeProvider } from 'styled-components';
 const syncLoadAssets = () => {
   assets = require(process.env.RAZZLE_ASSETS_MANIFEST!);
 };
@@ -20,7 +19,6 @@ server
 server.get('/*', (req, res) => {
   const context: any = {};
   const sheet = new ServerStyleSheet();
-
   const markup = renderToString(
     sheet.collectStyles(
       <StaticRouter context={context} location={req.url}>
@@ -42,6 +40,7 @@ server.get('/*', (req, res) => {
         <meta charset="utf-8" />
         <title>Welcome to Razzle</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style type="text/css">html,body{margin:0;padding:0}</style>
         ${
           assets.client.css
             ? `<link rel="stylesheet" href="${assets.client.css}">`

@@ -9,12 +9,17 @@
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "dependencies": {
-    "@types/styled-components": "^4.1.18",
+    "@types/react-redux": "^7.1.2",
+    "@types/redux": "^3.6.0",
     "express": "^4.17.1",
     "razzle": "^3.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
@@ -23,8 +28,10 @@
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^4.3.5",
+    "@types/styled-components": "^4.1.18",
     "@types/webpack-env": "^1.14.0",
     "css-loader": "^1.0.0",
+    "node-sass": "^4.12.0",
     "razzle-plugin-scss": "^3.0.0",
     "razzle-plugin-typescript": "^3.0.0",
     "tslint": "^5.19.0",
