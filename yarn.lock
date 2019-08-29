@@ -7694,6 +7694,11 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-critical-css@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-critical-css/-/react-critical-css-2.1.0.tgz#b22bbb9331477619fd56556c51c9d77e4d8c8b31"
+  integrity sha1-siu7kzFHdhn9VlVsUcnXfk2MizE=
+
 react-dev-utils@^6.0.4, react-dev-utils@^6.1.1:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-6.1.1.tgz#a07e3e8923c4609d9f27e5af5207e3ca20724895"

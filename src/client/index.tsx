@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from '../common/App';
 import { Provider } from 'react-redux';
 import configureStore from '../common/store';
+
 const store = configureStore((window as any).__PRELOADED_STATE__);
 
 hydrate(

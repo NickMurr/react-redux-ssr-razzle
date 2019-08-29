@@ -8,6 +8,8 @@ import { ServerStyleSheet, ThemeProvider } from 'styled-components';
 import configureStore from '../common/store';
 import { Provider } from 'react-redux';
 import serializeJavascript from 'serialize-javascript';
+import { CriticalCSSProvider, StyleRegistry } from 'react-critical-css';
+
 const syncLoadAssets = () => {
   assets = require(process.env.RAZZLE_ASSETS_MANIFEST!);
 };
@@ -27,13 +29,23 @@ server.get('/*', (req, res) => {
 
   const context: any = {};
   const sheet = new ServerStyleSheet();
+  const styleRegistry = new StyleRegistry();
+
   const markup = renderToString(
     <Provider store={store}>
       <StaticRouter context={context} location={req.url}>
-        {sheet.collectStyles(<App />)}
+        <CriticalCSSProvider registry={styleRegistry}>
+          <App />
+        </CriticalCSSProvider>
       </StaticRouter>
     </Provider>
   );
+  const criticalCSS = styleRegistry.getCriticalCSS();
+  const crit = Object.values(criticalCSS)
+    .join('')
+    .trim()
+    .replace(/\s/g, '');
+
   const finalState = store.getState();
   const styleTags = sheet.getStyleTags();
 
@@ -49,6 +61,7 @@ server.get('/*', (req, res) => {
         <title>Welcome to Razzle</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style type="text/css">html,body{margin:0;padding:0}</style>
+        <style type="text/css">${crit}</style>
         ${
           assets.client.css
             ? `<link rel="stylesheet" href="${assets.client.css}">`
@@ -63,6 +76,7 @@ server.get('/*', (req, res) => {
     </head>
     <body>
         <div id="root">${markup}</div>
+     
          <script>
           window.__PRELOADED_STATE__ = ${serializeJavascript(finalState)}
         </script>

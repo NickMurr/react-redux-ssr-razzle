@@ -1,7 +1,9 @@
 import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import Home from './Home';
+import { withStyles } from 'react-critical-css';
 import './App.scss';
+import h from './Home.css';
 import logo from './react.svg';
 import About from './components/About';
 import Counter from './components/counter';
@@ -50,7 +52,6 @@ const App = () => (
         </Links>
       </div>
     </HomeHeader>
-
     <Switch>
       <Route exact={true} path="/" component={Home} />
       <Route exact={true} path="/about" component={About} />
@@ -59,4 +60,4 @@ const App = () => (
   </div>
 );
 
-export default App;
+export default withStyles(h)(App);

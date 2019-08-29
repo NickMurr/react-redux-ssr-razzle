@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './react.svg';
 
-import './Home.scss';
+import './Home.css';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 

@@ -7,6 +7,7 @@ const initialState = {
   counter: 0
 };
 
+// tslint:disable-next-line: typedef
 export default function(state = initialState, action: any) {
   const { payload, type } = action;
 
