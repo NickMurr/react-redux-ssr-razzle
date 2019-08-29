@@ -5,7 +5,7 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Button = styled.button`
+export const Button = styled.button`
   border-radius: 3px;
   padding: 0.25em 1em;
   margin: 0 1em;

@@ -22,7 +22,7 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR!));
 
 server.get('/*', (req, res) => {
-  const counter = { counter: 3 };
+  const counter = { counter: Number((Math.random() * 100).toFixed()) };
   // Compile an initial state
   const preloadedState = { counter };
   const store = configureStore(preloadedState);
@@ -35,7 +35,7 @@ server.get('/*', (req, res) => {
     <Provider store={store}>
       <StaticRouter context={context} location={req.url}>
         <CriticalCSSProvider registry={styleRegistry}>
-          <App />
+          {sheet.collectStyles(<App />)}
         </CriticalCSSProvider>
       </StaticRouter>
     </Provider>
@@ -47,7 +47,7 @@ server.get('/*', (req, res) => {
     .replace(/\s/g, '');
 
   const finalState = store.getState();
-  const styleTags = sheet.getStyleTags();
+  const styleTags = sheet.getStyleTags().trim();
 
   if (context.url) {
     res.redirect(context.url);

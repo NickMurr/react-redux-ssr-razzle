@@ -39,6 +39,8 @@
     "node-sass": "^4.12.0",
     "razzle-plugin-scss": "^3.0.0",
     "razzle-plugin-typescript": "^3.0.0",
+    "sass-loader": "^7.3.1",
+    "scss-loader": "^0.0.1",
     "tslint": "^5.19.0",
     "tslint-react": "^4.0.0",
     "typescript": "^3.5.3"

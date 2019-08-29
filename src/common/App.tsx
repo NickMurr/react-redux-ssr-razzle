@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import Home from './Home';
 import { withStyles } from 'react-critical-css';
-import './App.scss';
-import h from './Home.css';
+import a from './App.scss';
+import s from './Home.css';
 import logo from './react.svg';
 import About from './components/About';
 import Counter from './components/counter';
@@ -60,4 +60,4 @@ const App = () => (
   </div>
 );
 
-export default withStyles(h)(App);
+export default withStyles(s)(App);
