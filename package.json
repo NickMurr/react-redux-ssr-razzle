@@ -36,7 +36,7 @@
     "@types/styled-components": "^4.1.18",
     "@types/webpack-env": "^1.14.0",
     "css-loader": "^1.0.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "razzle-plugin-scss": "^3.0.0",
     "razzle-plugin-typescript": "^3.0.0",
     "sass-loader": "^7.3.1",
