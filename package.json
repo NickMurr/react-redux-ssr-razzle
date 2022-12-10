@@ -14,7 +14,7 @@
     "@types/redux": "^3.6.0",
     "@types/serialize-javascript": "^1.5.0",
     "express": "^4.17.1",
-    "qs": "^6.8.0",
+    "qs": "^6.8.3",
     "razzle": "^3.0.0",
     "react": "^16.9.0",
     "react-critical-css": "^2.1.0",
